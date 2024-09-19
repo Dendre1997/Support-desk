@@ -1,0 +1,24 @@
+instal npm (npm init) will create package.json
+
+add script to pakage.json replase test with start: "node (endpoint)"
+
+set up git repository (git init) that will create git repository
+
+create gitignore (touch gitignore) in gitignore add node_modules, .env 
+
+INSTALL DEPENDENCIES
+
+npm i express (framework),  
+
+npm i dotenv
+
+npm i mongoose (mongodb database )
+
+npm i colors (allow use specific colors in terminal)
+
+npm i bcryptjs (to hash passwords)
+
+npm i -D nodemon (-D for dev dependencies) (nonemon will constantly watch js server file so don't need to restart server whatever I make changes)
+
+create script in pakage.json for nodemon in scripts under start  "server": "nodemon (endpoint {for instance server.js})"
+
