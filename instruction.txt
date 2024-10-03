@@ -22,3 +22,103 @@ npm i -D nodemon (-D for dev dependencies) (nonemon will constantly watch js ser
 
 create script in pakage.json for nodemon in scripts under start  "server": "nodemon (endpoint {for instance server.js})"
 
+
+npm install --save express-async-handler //install express async handler 
+https://www.npmjs.com/package/express-async-handler
+
+conect to database
+
+add routes controller 
+error exception handling 
+conect to database
+register user
+login user
+
+ npm i jsonwebtoken (instal json webtoken) bring that in to userController.js (https://jwt.io/)
+
+create protected user route
+create piece of middleware to protect specific route (in middleware folder create file 'authMiddleware.js')
+
+
+npx create-react-app frontend --template redux (Creating frontEnd folder with redux )
+
+"client": "npm start --prefix frontend" (add script to run client in package.json in root )
+
+npm i concurrently (install package which allow to run client and server at the same time)
+
+"dev": "concurrently \"npm run server\" \"npm run client\"" (add script to run dev in package.json in root)
+
+npm i react-router-dom react-toastify axios react-icons react-modal (instal to frontEnd folder)
+
+ctrl + d (select all lines with same name in it)
+
+create pages
+
+Redux Toolkit
+Setting Up the Store
+Import necessary modules:
+
+in store.js
+import { configureStore } from '@reduxjs/toolkit';
+import authReducer from '../features/auth/authSlice';
+
+Configure the store 
+export const store = configureStore({
+  reducer: {
+    auth: authReducer,
+  },
+});
+
+Creating the authSlice.js
+Import necessary modules:
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+Define the initial state:
+const initialState = {
+  user: null,
+  isError: false,
+  isSuccess: false,
+  isLoading: false,
+  message: '',
+};
+
+Create async thunks for register and login:
+// Register new user
+export const register = createAsyncThunk('auth/register', async (user, thunkAPI) => {
+  console.log(user);
+});
+
+// Login user
+export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
+  console.log(user);
+});
+
+Import  hooks and actions in login.jsx and register.jsx
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../features/auth/authSlice';
+import { FaSignInAlt } from 'react-icons/fa';
+
+Define the onSubmit form function:
+const onSubmit = (e) => {
+  e.preventDefault();
+  const dispatch = useDispatch();
+  const { user, isLoading, isSuccess, message } = useSelector((state) => state.auth);
+  const userData = {
+    email,
+    password,
+  };
+
+  dispatch(login(userData));
+};
+
+
+Call the register function from authService register from authSlice or error with try catch 
+try { 
+        return await authService.register(user)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+
+        return thunkAPI.rejectWithValue(message)
+    }
+    authService.js:
+    import axios from 'axios'
