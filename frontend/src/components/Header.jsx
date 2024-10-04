@@ -15,7 +15,8 @@ function Header() {
         navigate('/')
     }
 
-  return (
+    return (
+      <>
       <div className='header'>
           <div className="logo">
               <Link to='/'>Support Desk</Link>
@@ -42,8 +43,9 @@ function Header() {
                           </>
               )}
           </ul>
-
-    </div>
+              
+            </div>
+      </>
   )
 }
 
